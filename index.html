@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Swiper demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,900;1,100;1,200;1,300;1,400;1,500;1,800;1,900&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      color: #000;
+      margin: 0;
+      padding: 0;
+      padding: 50px 0;
+    }
+
+    .swiper {
+        background: #eee;
+        padding: 50px 15px;
+        height: 550px;
+    }
+
+    .swiper .swipper-wrapper{
+        justify-content: center;
+        align-items: center;
+        flex:  auto 300px;
+    }
+
+    .swiper h2{
+        font-size: 32px;
+        font-weight: 500;
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    .swiper h3{
+        font-size: 16px;
+        font-weight: normal;
+        text-align: center;
+        margin: 10px 0;
+    }
+    .swiper-slide {
+      font-size: 18px;
+      background: #fff;
+      height: 350px;
+      padding: 23px;
+      width: auto;
+      border-radius: 5px;
+      cursor: grab;
+    }
+
+    .swiper-pagination .swiper-pagination-bullet{
+        margin: 0 7px !important;
+    }
+
+    .swiper-button-next{
+        background-color: #ffffffc7 !important;
+        display: flex;
+        padding: 20px;
+        width: 45px;
+        height: 45px;
+        color: #111;
+        right: 20px !important;
+        justify-content: center;
+        align-items: center;
+        font-size: 25px;
+    }
+    .swiper-button-next::after, .swiper-button-prev::after{
+        display: none;
+    }
+    .swiper-button-prev {
+        background-color: #ffffffc7 !important;
+        display: flex;
+        padding: 20px;
+        width: 45px;
+        height: 45px;
+        color: #111;
+        justify-content: center;
+        align-items: center;
+        font-size: 25px;
+    }
+    .swiper .testimonie__title{
+        display: flex;
+        align-items: center;
+    }
+    .swiper .testimonie__title .icon_user{
+        width: 65px;
+        height: 65px;
+        background-image: url("//cdn.shopify.com/s/files/1/0201/1788/0932/files/viscosoft-sprt-avatars.png");
+        background-size: auto 65px;
+        background-repeat: no-repeat;
+        border-radius: 50%;
+        margin-right: 15px;
+    }
+
+    .swiper .swiper-slide:nth-child(1) .testimonie__title .icon_user{
+        background-position-x: -0px !important;
+    }
+
+    .swiper .swiper-slide:nth-child(2) .testimonie__title .icon_user{
+        background-position-x: -70px !important;
+    }
+
+    .swiper .swiper-slide:nth-child(3) .testimonie__title .icon_user{
+        background-position-x: -140px !important;
+    }
+
+    .swiper .swiper-slide:nth-child(4) .testimonie__title .icon_user{
+        background-position-x: -210px !important;
+    }
+
+    .swiper .swiper-slide:nth-child(5) .testimonie__title .icon_user{
+        background-position-x: -280px !important;
+    }
+
+    .swiper .swiper-slide:nth-child(6) .testimonie__title .icon_user{
+        background-position-x: -350px !important;
+    }
+
+    .swiper .testimonie__title .name{
+        color: #444;
+        font-size: 14px;
+        font-weight: normal;
+    }
+
+    .swiper .testimonie__title .status{
+        color: #444;
+        font-size: 14px;
+        font-weight: normal;
+    }
+
+    .testimonie__card .rating{
+        margin-top: 15px;
+    }
+
+    .swiper .testimonie__card p{
+        font-size: 14px;
+        color: #444;
+        margin-top: 8px;
+        height: 88px;
+    }
+
+    .swiper .testimonie__card h5{
+        font-size: 20px;
+        margin-bottom: 25px;
+        margin-top: 10px;
+        font-weight: normal;
+        color: #444;
+    }
+
+    .after_slide{
+        position: relative;
+        height: 100%;
+    }
+
+    .after_slide .bg__img{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        z-index: -5;
+    }
+
+    .after_slide .illustration .illustration__img{
+        height: 300px;
+        margin: 25px;
+    }
+
+    .after_slide .illustration{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        align-content: center;
+        padding: 30px;
+    }
+
+    .after_slide .illustration .texte{
+        font-size: 10px;
+        color: #333;
+        text-align: center;
+        width: 400px;
+    }
+
+    .after_slide .illustration .texte h2{
+        font-size: 20px;
+        font-weight: normal;
+    }
+
+    .after_slide .illustration .links{
+        font-size: 20px;
+        margin-top: 20px;
+        color: #343c69;
+    }
+
+    .after_slide .illustration .links a{
+        position: relative;
+        text-decoration: none;
+        color: #343c69;
+    }
+
+    .after_slide .illustration .links a::after{
+        position: absolute;
+        content: "";
+        bottom: 0;
+        left: 0;
+        transform-origin: left;
+        transform: scaleX(100%);
+        background-color: #343c69;
+        width: 100%;
+        height: 1px;
+        transition: transform 0.3s ease;
+    }
+
+    .after_slide .illustration .links a:hover::after{
+        transform: scaleX(0);
+    }
+
+    @media (max-width: 1020px) {
+        .swiper .testimonie__card p{
+            font-size: 1.5vw;
+            color: #444;
+            margin-top: 8px;
+            height: 88px;
+        }
+    }
+
+    @media (max-width: 1000px) {
+        .after_slide .illustration .texte h2{
+            font-size: 13px;
+            font-weight: normal;
+        }
+
+        .after_slide .illustration .links{
+            font-size: 20px;
+            margin-top: 20px;
+            position: absolute;
+            bottom: 0;
+            left: 40%;
+            text-align: center;
+        }
+        .after_slide .illustration .links a{
+            position: relative;
+            text-decoration: none;
+            font-size: 14px;
+            color: #343c69;
+            font-weight: 300;
+        }
+    }
+
+    @media (max-width:730px) {
+        .after_slide .illustration .illustration__img{
+            height: auto;
+            width: 100%;
+            margin: 25px;
+        }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Swiper -->
+  <div id="slider" class="swiper">
+
+    <h3>Comment Mello a changé les nuits de ses clients</h3>
+
+    <h2>Des dormeurs satisfaits</h2>
+
+    <div class="swiper-wrapper">
+
+      <div class="swiper-slide">
+        <div class="testimonie__card">
+            <div class="testimonie__title">
+                <div class="icon_user"></div>
+                <div class="user__info">
+                  <div class="name">SANDRINE M.</div>  
+                  <div class="status">Acheteur vérifié</div>  
+                </div>
+            </div>
+            <div class="rating">
+                <img width="20" height="20" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                <img width="20" height="20" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                <img width="20" height="20" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                <img width="20" height="20" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                <img width="20" height="20" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+            </div>
+            <h5>Ravie 🤗</h5>
+            <p>
+                Mon matelas était trop dur mais pas assez vieux pour être changé 
+                donc c'était le bon compromis. Je retrouve désormais un lit douillet 🤗
+            </p>
+        </div>
+      </div>
+
+      <div class="swiper-slide">
+        <div class="testimonie__card">
+            <div class="testimonie__title">
+                <div class="icon_user"></div>
+                <div class="user__info">
+                  <div class="name">CHRISTELLE L.</div>  
+                  <div class="status">Acheteur vérifié</div>  
+                </div>
+            </div>
+            <div class="rating">
+                <img width="20" height="20" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                <img width="20" height="20" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                <img width="20" height="20" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                <img width="20" height="20" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                <img width="20" height="20" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+            </div>
+            <h5>Fantastique</h5>
+            <p>
+                Un nuage de douceur et un moelleux très confortable. 
+                Sur notre matelas trop dur il nous permet de ne plus avoir mal au dos ! 
+                Parfait
+            </p>
+        </div> 
+      </div>
+      <div class="swiper-slide">
+        <div class="testimonie__card">
+            <div class="testimonie__title">
+                <div class="icon_user"></div>
+                <div class="user__info">
+                  <div class="name">LINDA W.</div>  
+                  <div class="status">Acheteur vérifié</div>  
+                </div>
+            </div>
+            <div class="rating">
+                <img width="20" height="20" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                <img width="20" height="20" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                <img width="20" height="20" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                <img width="20" height="20" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                <img width="20" height="20" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+            </div>
+            <h5>EXCELLENT !!</h5>
+            <p>
+                Je suis trop contente avec mon achat. Surmatelas de haute qualité. 
+                Livraison rapide. Top top top !
+            </p>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="testimonie__card">
+            <div class="testimonie__title">
+                <div class="icon_user"></div>
+                <div class="user__info">
+                  <div class="name">VALERIE G.</div>  
+                  <div class="status">Acheteur vérifié</div>  
+                </div>
+            </div>
+            <div class="rating">
+                <img width="20" height="20" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                <img width="20" height="20" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                <img width="20" height="20" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                <img width="20" height="20" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                <img width="20" height="20" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+            </div>
+            <h5>Super!</h5>
+            <p>
+                Produit conforme a la description. Bon rapport qualité /prix. 
+                Le service client est agréable et repond bien a nos questions/suivi du colis. 
+                Envoi rapide. Je recommande sans problème cette entreprise.
+            </p>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="testimonie__card">
+            <div class="testimonie__title">
+                <div class="icon_user"></div>
+                <div class="user__info">
+                  <div class="name">JEAN-LUC M.</div>  
+                  <div class="status">Acheteur vérifié</div>  
+                </div>
+            </div>
+            <div class="rating">
+                <img width="20" height="20" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                <img width="20" height="20" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                <img width="20" height="20" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                <img width="20" height="20" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                <img width="20" height="20" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+            </div>
+            <h5>Très satisfaits</h5>
+            <p>
+                Nous sommes ravis de notre achat. 
+                Le surmatelas a réellement amélioré notre qualité de sommeil sur un matelas 
+                récent mais que nous trouvions trop ferme.
+            </p>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="testimonie__card">
+            <div class="testimonie__title">
+                <div class="icon_user"></div>
+                <div class="user__info">
+                  <div class="name">ELSA B.</div>  
+                  <div class="status">Acheteur vérifié</div>  
+                </div>
+            </div>
+            <div class="rating">
+                <img width="20" height="20" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                <img width="20" height="20" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                <img width="20" height="20" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                <img width="20" height="20" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+                <img width="20" height="20" src="https://img.icons8.com/fluency/48/filled-star.png" alt="filled-star"/>
+            </div>
+            <h5>Satisfaite</h5>
+            <p>
+                Superbe qualité, les finitions sont dignes des plus grands noms de la literie. 
+                Dès la première nuit on sent tout de suite les bienfaits de la mémoire de forme : 
+                soutien, relaxation et apaisement, enfin de bonnes nuits !
+            </p>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-button-next">
+        <i class="bi bi-chevron-right"></i>
+    </div>
+    <div class="swiper-button-prev">
+        <i class="bi bi-chevron-left"></i>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+
+  <div class="after_slide">
+    <img class="bg__img" src="http://viscosoft.imgix.net/shopify/vs/home/vs-shipping-div-background-homepage.jpg?auto=compress,format?auto=compress,format" alt="">
+    <div class="illustration">
+        <img class="illustration__img" src="house.png" alt="">
+        <div class="texte">
+            <h2>Une question</h2>
+            <h2>Contactez notre équipe par email ou par téléphone.</h2>
+            <div class="links">
+                <a href="#">Plus d'informations &rarr;</a>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper('.swiper', {
+        loop: true,
+        slidesPerView: 3,
+        spaceBetween: 20,
+        keyboard: {
+        enabled: true,
+        onlyInViewport: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        direction: 'horizontal',
+        navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+        breakpoints: {
+            // when window width is >= 320px
+            780: {
+                slidesPerView: 2,
+                spaceBetween: 10,
+            },
+            650: {
+                slidesPerView: 1,
+                spaceBetween: 20,
+            },
+        }
+      },
+    });
+  </script>
+</body>
+
+</html>
