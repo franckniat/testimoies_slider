@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
   <meta charset="utf-8" />
@@ -30,14 +30,13 @@
 
     .swiper {
         background: #eee;
-        padding: 50px 15px;
-        height: 550px;
+        padding: 50px 15px !important;
+        padding-bottom: 80px !important;
     }
 
     .swiper .swipper-wrapper{
         justify-content: center;
         align-items: center;
-        flex:  auto 300px;
     }
 
     .swiper h2{
@@ -57,14 +56,18 @@
       font-size: 18px;
       background: #fff;
       height: 350px;
+      width: 100%;
       padding: 23px;
-      width: auto;
       border-radius: 5px;
       cursor: grab;
     }
 
     .swiper-pagination .swiper-pagination-bullet{
         margin: 0 7px !important;
+    }
+
+    .swiper-pagination{
+        padding-top: 35px;
     }
 
     .swiper-button-next{
@@ -458,9 +461,20 @@
   <!-- Initialize Swiper -->
   <script>
     var swiper = new Swiper('.swiper', {
+        freeMode: true,
+        autoplay: {
+            delay: 2000,
+            pauseOnMouseEnter: true
+        },
+        lazy: {
+            loadPrevNext: true,
+            loadPrevNextAmount: 2
+        },
+        preloadImages: false,
+        centeredSlides: true,
         loop: true,
-        slidesPerView: 3,
-        spaceBetween: 20,
+        slidesPerView: 2,
+        spaceBetween: 10,
         keyboard: {
         enabled: true,
         onlyInViewport: false,
@@ -474,16 +488,8 @@
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
         breakpoints: {
-            // when window width is >= 320px
-            780: {
-                slidesPerView: 2,
-                spaceBetween: 10,
-            },
-            650: {
-                slidesPerView: 1,
-                spaceBetween: 20,
-            },
-        }
+            670: { slidesPerView: 'auto', spaceBetween: 10 },
+        },
       },
     });
   </script>
